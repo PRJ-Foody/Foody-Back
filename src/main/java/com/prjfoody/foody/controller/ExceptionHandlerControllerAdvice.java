@@ -17,6 +17,7 @@ public class ExceptionHandlerControllerAdvice {
         return "main";
     }
 
+ */
 
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -34,5 +35,4 @@ public class ExceptionHandlerControllerAdvice {
         return "404";
     }
 
- */
 }

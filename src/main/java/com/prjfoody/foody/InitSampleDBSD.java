@@ -24,35 +24,7 @@ public class InitSampleDBSD implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        init();
         suuding();
-    }
-
-    public void init(){
-        System.out.println("InitSampleDB.init");
-
-        Users users = new Users();
-        users.initCreateTime();
-        users.setName("푸디");
-        users.setPasswd("1234");
-        users.setTel("1234-5678");
-        users.setEmail("abcd@gmail.com");
-        users.setAddress("부산시 남구");
-        users.setUserType(UserType.ADMIN);
-
-
-        Product product = new Product();
-        product.initStuff(users);
-        product.setPrice(10000);
-        product.setSalePrice(7000);
-        product.calcSaleRate();
-        product.setSaleStatus(true);
-        product.setQuantity(100);
-        product.setCategory(Category.MEAT);
-        product.setGrade(8);
-
-        em.persist(users);
-        em.persist(product);
     }
 
     public void suuding() {
