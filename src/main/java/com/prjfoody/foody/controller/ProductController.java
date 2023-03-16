@@ -45,8 +45,9 @@ public class ProductController implements Controllers<Product> {
 
         model.addAttribute("product", product);
 
-        return "select";
+        return "/src-thymeleaf/html/product/goods";
     }
+
 
     /* 상품 다수 조회 */
     @GetMapping("/product")
@@ -59,11 +60,17 @@ public class ProductController implements Controllers<Product> {
 
         List<Product> products = service.select(product, userFromRequest.convert(request));
         if(products.size() > 0){
-            model.addAttribute("products", products);
+            model.addAttribute("productList", products);
         }
+        model.addAttribute("category",product.getCategory());
 
+        return "/src-thymeleaf/html/product/product";
+    }
 
-        return "createProduct";
+    @GetMapping("/product/create")
+    public String create(Model model){
+        model.addAttribute("product", new Product());
+        return "/src-thymeleaf/html/product/create";
     }
 
     // todo: 상품등록 페이지 필요
@@ -78,11 +85,11 @@ public class ProductController implements Controllers<Product> {
         Users users = userFromRequest.convert(request);
         if (service.create(product, users)){
             model.addAttribute("product", product);
-            return "createProduct";
+
         }
 
         // 에러페이지
-        return "select";
+        return "redirect:/";
     }
 
     // todo: 상품 수정 페이지

@@ -1,0 +1,39 @@
+@import "../variables";
+@import "../component/product-box";
+@import "../component/basket-icon";
+
+a {
+  text-decoration: none;
+}
+
+.product-category {
+  margin-top: $margin-top;
+  margin-bottom: $f1;
+
+  .title {
+    padding: $p1;
+    font-size: $f1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $f2;
+  }
+
+  .nav-link {
+    color: black;
+  }
+}
+
+.pagination {
+  justify-content: center;
+  font-size: $f2;
+
+  .page-link {
+    color: black;
+  }
+}

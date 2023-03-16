@@ -34,7 +34,7 @@ public class UserController implements Controllers<Users> {
     public String login(Model model, HttpServletRequest request) {
         model.addAttribute("user", new Users());
 
-        return "users/login";
+        return "src-thymeleaf/html/user/login";
     }
     
     // 로그인 요청
@@ -47,7 +47,7 @@ public class UserController implements Controllers<Users> {
             session.setAttribute(SessionAttributes.ID.name(), selectUser.get(0));
         }
 
-        return "users/userDetail";
+        return "redirect:/";
     }
 
     // 로그아웃 요청
@@ -57,7 +57,7 @@ public class UserController implements Controllers<Users> {
         if (users != null && users.getId() != null)
             request.getSession().invalidate();
 
-        return "main";
+        return "redirect:/";
     }
 
     // 사용자 조회
@@ -72,7 +72,13 @@ public class UserController implements Controllers<Users> {
             return "users/userDetail";
         }
 
-        return "main";
+        return "/src-thymeleaf/html/main/main-page";
+    }
+
+    @GetMapping("/user/register")
+    public String register(Model model) {
+        model.addAttribute("user", new Users());
+        return "src-thymeleaf/html/user/register";
     }
 
     // 회원가입
